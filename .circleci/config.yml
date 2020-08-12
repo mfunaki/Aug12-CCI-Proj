@@ -6,4 +6,11 @@ jobs:
     steps:
       - checkout
       - run: echo "Hello Build"
+  test:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "Then Test"
+      - run: sleep 5
       
