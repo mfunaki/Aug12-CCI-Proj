@@ -20,6 +20,12 @@ jobs:
       - checkout
       - run: echo "Then Test-2"
       - run: sleep 5
+  deploy:  
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "Finally Deploy"
 
 workflows:
   version: 2
@@ -32,3 +38,7 @@ workflows:
       - test-2:
           requires:
             - build
+      - deploy:
+          requires:
+            - test-1
+            - test-2
